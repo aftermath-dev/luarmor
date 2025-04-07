@@ -9,8 +9,6 @@ module.api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.
 
 module.api.script_id = module.init
 
-module.Notify = nil
-
 
 module.Functions = {
     CheckKey = function(Key)
@@ -19,12 +17,8 @@ module.Functions = {
         if status.code == "KEY_VALID" then
             script_key = Key
             return {STATUS=status,API=module.api,KEYSCRIPT=script}
-        else
-            if module.Notify ~= nil then
-                module.Notify("Error",status.message,5)
-            end
-            return {STATUS=status,API=module.api,KEYSCRIPT=script}
         end
+            return {STATUS=status,API=module.api,KEYSCRIPT=script}
     end
 }
 

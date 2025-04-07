@@ -24,11 +24,11 @@ end
 KeyModule.Notify = Notify
 
 local keyFile
-if not isfile("Koronis/key.txt") then
-	writefile("Koronis/key.txt","")
-	keyFile = readfile("Koronis/key.txt")
+if not isfile("Luarmor_AOH/key.txt") then
+	writefile("Luarmor_AOH/key.txt","")
+	keyFile = readfile("Luarmor_AOH/key.txt")
 else
-	keyFile = readfile("Koronis/key.txt")
+	keyFile = readfile("Luarmor_AOH/key.txt")
 	local response = KeyModule.Functions.CheckKey(keyFile)
 	if response.STATUS.code == "KEY_VALID" then
 		game:GetService("StarterGui"):SetCore("SendNotification", {
@@ -98,7 +98,7 @@ Content:Button({
 	Callback = function()
 		local response = KeyModule.Functions.CheckKey(Key:GetValue())
 		if response.STATUS.code == "KEY_VALID" then
-			writefile("Koronis/key.txt",Key:GetValue())
+			writefile("Luarmor_AOH/key.txt",Key:GetValue())
 			response.KEYSCRIPT:Destroy()
 			KeySystem:Close()
 			script_key = Key:GetValue()

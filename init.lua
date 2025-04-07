@@ -3,25 +3,6 @@ if not isfolder("Luarmor_AOH") then
 end
 KeyModule = loadstring(game:HttpGet("https://antioderhub.lol/raw/keysystemv1/modulekeysys.lua"))()
 local ImGui = loadstring(game:HttpGet('https://github.com/depthso/Roblox-ImGUI/raw/main/ImGui.lua'))()
-local Notify = function(title, content, duration)
-	local ModalWindow = ImGui:CreateModal({ --// Returns a Tab class
-		Title = title,
-		AutoSize = "Y"
-	})
-
-	ModalWindow:Label({
-		Text = content,
-	})
-	ModalWindow:Separator()
-
-	ModalWindow:Button({
-		Text = "Okay",
-		Callback = function()
-			ModalWindow:Close()
-		end,
-	})
-end
-KeyModule.Notify = Notify
 
 local keyFile
 if not isfile("Luarmor_AOH/key.txt") then
@@ -111,7 +92,6 @@ Content:Button({
 	Text = "Copy Key Website",
 	Callback = function()
 		setclipboard("https://antioderhub.lol/keysystem/")
-		Notify("Link Copied", "Free key link copied to clipboard.")
 	end,
 })
 

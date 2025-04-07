@@ -1,7 +1,7 @@
 local module = {}
 
 module.IDs = {
-  ["Main"] = "3f75265b6170bf5a9401f19dacaa4cc9"
+  ["Main"] = "892f6a026b91a86c14432a08dd0ab0c1"
 }
 
 module.init = module.IDs.Main

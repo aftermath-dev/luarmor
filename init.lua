@@ -1,8 +1,10 @@
 if not isfolder("Luarmor_AOH") then
 	makefolder("Luarmor_AOH")
 end
-KeyModule = loadstring(game:HttpGet("https://antioderhub.lol/raw/keysystemv1/modulekeysys.lua"))()
+local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
 local ImGui = loadstring(game:HttpGet('https://github.com/depthso/Roblox-ImGUI/raw/main/ImGui.lua'))()
+
+api.script_id = "892f6a026b91a86c14432a08dd0ab0c1"
 
 local keyFile
 if not isfile("Luarmor_AOH/key.txt") then
@@ -10,15 +12,15 @@ if not isfile("Luarmor_AOH/key.txt") then
 	keyFile = readfile("Luarmor_AOH/key.txt")
 else
 	keyFile = readfile("Luarmor_AOH/key.txt")
-	local response = KeyModule.Functions.CheckKey(keyFile)
-	if response.STATUS.code == "KEY_VALID" then
+	local status = api.check_key(keyFile)
+	if (status.code == "KEY_VALID") then
 		game:GetService("StarterGui"):SetCore("SendNotification", {
 			Title = "Found User",
 			Text = "Key Found, Loading AntiOder Hub...",
 			Duration = 5
 		})
 		script_key = keyFile
-		response.API.load_script()
+		api.load_script()
 		script:Destroy()
 		return
 
@@ -77,13 +79,12 @@ local Key = Content:InputText({
 Content:Button({
 	Text = "Enter",
 	Callback = function()
-		local response = KeyModule.Functions.CheckKey(Key:GetValue())
-		if response.STATUS.code == "KEY_VALID" then
+		local status = api.check_key(Key:GetValue()); 
+		if (status.code == "KEY_VALID") then
 			writefile("Luarmor_AOH/key.txt",Key:GetValue())
-			response.KEYSCRIPT:Destroy()
 			KeySystem:Close()
 			script_key = Key:GetValue()
-			response.API.load_script()
+			api.load_script()
 			script:Destroy()
 		end
 	end,
